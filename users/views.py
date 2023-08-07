@@ -4,8 +4,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import CustomUSerCreationForm
 
-def home(request):
-    return render(request, 'index.html')
 
 def register(request):
     if request.method == 'POST':
@@ -16,7 +14,7 @@ def register(request):
             return redirect('login')
     else:
         form = CustomUSerCreationForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'users/register.html', {'form': form})
 
 def user_login(request):
     if request.method == 'POST':
@@ -28,10 +26,10 @@ def user_login(request):
             return redirect('profile')
         else:
             messages.error(request, 'Invalid username or password.')
-    return render(request, 'login.html')
+    return render(request, 'users/login.html')
 
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'users/profile.html')
 
 def user_logout(request):
     logout(request)

@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{%block title%}Electronica{%endblock%}</title>
+    <title>{% block title %}Electronica{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 
 <body>
+    {% block head %}
     <!-- Header section -->
-    {%block nav%}
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <!-- Add your logo or site title here -->
                 <a class="navbar-brand" href="/">Electronica</a>
@@ -19,27 +19,31 @@
                 <!-- Add your navigation links here (e.g., Home, Shop, Contact, etc.) -->
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <!-- Search Form -->
+                        <form class="input-group mb-3">
+                            <input type="text" class="form-control"  placeholder="Search">
+                            <button class="btn btn-secondary" type="submit" id="search-btn">Search</button>
+                         </form>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/shop">Shop</a>
+                        <a class="nav-link" href="{% url 'shop' %}">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
+                        <a class="nav-link" href="{% url 'users' %}">SignIn</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
-    {%endblock%}
+    {% endblock %}
     <!-- Main content section -->
-    {%block contents%}
-    <main>
-       
+        {% block contents %}
+            <main>
 
-    </main>
-    {%endblock%}
-    {%block footer%}
+            </main>
+        {% endblock %}
+        
+        {% block footer %}
     <!-- Footer section -->
     <footer class="mt-auto py-3 bg-light">
         <div class="container text-center">
@@ -47,9 +51,9 @@
             <p>&copy; 2023 Electronica - Swahilielite. All rights reserved.</p>
         </div>
     </footer>
-    {%endblock%} 
+        {% endblock %}
     <!-- Bootstrap JS (Optional, only needed for certain components) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 </html>
