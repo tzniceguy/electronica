@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout
-from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .forms import CustomUSerCreationForm
 
@@ -11,10 +11,12 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Account created successfully. You can now log in.')
-            return redirect('login')
+            return HttpResponseRedirect('/users/login')
     else:
         form = CustomUSerCreationForm()
     return render(request, 'users/register.html', {'form': form})
+
+
 
 def user_login(request):
     if request.method == 'POST':

@@ -125,3 +125,15 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+
+# Define the base directory for media files
+MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
+
+# Define the URL prefix for media files
+MEDIA_URL = '/media/'
+
+
+AUTHENTICATION_BACKENDS = [
+    'authentication.backends.CustomUserAuthenticationBackend',
+]

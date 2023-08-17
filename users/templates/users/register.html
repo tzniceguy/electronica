@@ -1,6 +1,15 @@
 {%extends './base.html'%}
 
 {%block contents%}
+<div class="card">
+    {% if messages %}  
+        <ul>   
+            {% for message in messages %}  
+                <li>{{ message }}</li>  
+            {% endfor %}  
+        </ul>   
+    {% endif %}  
+</div>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -9,7 +18,7 @@
                     <h4 class="mb-0">Registration Form</h4>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{% url 'register' %}">
+                    <form method="post">
                         {% csrf_token %}
                         {{ form.as_p }}
                         <button type="submit" class="btn btn-secondary">Register</button>
