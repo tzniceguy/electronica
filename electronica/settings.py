@@ -135,5 +135,6 @@ MEDIA_URL = '/media/'
 
 
 AUTHENTICATION_BACKENDS = [
-    'authentication.backends.CustomUserAuthenticationBackend',
+    'authentication.backends.CustomUserAuthenticationBackend', #custom authentication backend
+    'django.contrib.auth.backends.ModelBackend', # django default authentication backend
 ]
