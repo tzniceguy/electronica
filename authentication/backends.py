@@ -17,21 +17,17 @@ class CustomUserAuthenticationBackend(ModelBackend):
             if user.is_active and not user.is_superuser and not user.is_staff:
                 if user.check_password(password):
                     return user
+
+                # Additional check for superusers and staff members
+                if user.is_superuser or user.is_staff:
+                    if user.check_password(password):
+                        return user
+
         except CustomUser.DoesNotExist:
             return None
-        
-              # Additional check for superusers and staff members
-        if user.is_superuser or user.is_staff:
-            if user.check_password(password):
-                return user
-
-        return None
-
 
     def get_user(self, user_id):
         try:
             return CustomUser.objects.get(pk=user_id)
         except CustomUser.DoesNotExist:
             return None
-        
-    

@@ -15,4 +15,5 @@ def product_detail(request, pk):
     return render(request, 'shop/product_detail.html', {'product': product})
 
 def discount_product(request):
-    return render(request, 'shop/discounted-products.html')
+    discounted_products = Product.objects.filter(discount__gt=0)
+    return render(request, 'shop/discounted-products.html', {'discounted_products' : discounted_products})
