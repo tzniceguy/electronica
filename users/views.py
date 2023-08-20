@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from .forms import CustomUSerCreationForm
+from .forms import CustomUSerCreationForm, UpdateUserForm
 
 
 def register(request):
@@ -32,7 +32,15 @@ def user_login(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    if request.method == 'POST':
+        form = UpdateUserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect('profile')
+    else:
+        form = UpdateUserForm()
+    return render(request, 'users/profile.html', {'form':form})
 
 @login_required
 def user_logout(request):
