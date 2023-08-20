@@ -16,13 +16,18 @@ class CustomUserManager(AbstractUserManager):
         return self._create_user(email, username, password, **extra_fields)
 
 class CustomUser(AbstractUser):
+    '''Fields that are used in authentication of customer/user'''
     email = models.EmailField(unique=True)
+    username = models.CharField(max_length=15, unique=True)
+    phonenumber= models.IntegerField(blank=True, null=True)
+
+    '''Additional fields that are not used in authentications but
+    contains data about the user/customer'''
     firstname = models.CharField(max_length=30, blank=True)
     lastname = models.CharField(max_length=30, blank=True)
     address= models.CharField(max_length=30, blank=True)
-    username = models.CharField(max_length=15, unique=True)
-    phonenumber= models.IntegerField(blank=True, null=True)
     dob=models.DateField(blank=True,null=True)
+    profile_image = models.ImageField(upload_to='profile_images/', blank=True, null=True)
 
     objects = CustomUserManager()
 
