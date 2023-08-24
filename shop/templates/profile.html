@@ -20,12 +20,13 @@
                                 <h5>Hello, {{ request.user.username }}</h5>
                             </div>
                         </div>
-                        <div class="card-body" id="profile-form" style="display: none;">
+                        <div class="card-body" id="profile-form" style="display: none; margin-top: 20px;">
                             <form method="post">
                                 {% csrf_token %}
                                 {{ form.as_p }}
                                 <button type="submit" class="btn btn-secondary">Update Profile</button>
                             </form>
+                            <button type="button" class="btn btn-secondary mt-2" id="close-form-button">Close</button>
                         </div>
                     </div>
                 </div>
@@ -34,10 +35,15 @@
     </section>
     <script>
         const editButton = document.getElementById('edit-profile-button');
+        const closeFormButton = document.getElementById('close-form-button');
         const profileForm = document.getElementById('profile-form');
 
         editButton.addEventListener('click', () => {
             profileForm.style.display = 'block';
+        });
+
+        closeFormButton.addEventListener('click', () => {
+            profileForm.style.display = 'none';
         });
     </script>
 {% endblock %}
