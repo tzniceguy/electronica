@@ -1,5 +1,5 @@
 {% extends './base.html' %}
-
+{% load static%}
 {% block contents %}
     <section class="banner">
         <div class="container">
@@ -26,13 +26,13 @@
             </div>
             <div class="shop-category-wrap d-flex flex-wrap justify-content-between">
                 <div class="shop-category-single-item">
-                    <img src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e570738029a725e686_Furniture-min.png" loading="lazy" alt="" class="rounded float-start">
+                    <img src="https://images.samsung.com/is/image/samsung/assets/ph/smartphones/galaxy-s23-ultra/specs/images/galaxy-s23-ultra-specs-color-green-s.jpg?$163_346_PNG$" loading="lazy" alt="" class="rounded float-start">
                     <h3 class="category-title">Samsung</h3>
                 </div>
                 <div class="shop-category-single-item">
-                    <img src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e52d6553668075697e_hand%20bag-min.png" loading="lazy" alt="" class="rounded float-start">
+                    <img src="{% static 'assets/iphone.jpg' %}" loading="lazy" alt="" class="img-fluid">
                     <h3 class="category-title">Iphone</h3>
-                </div>
+                </div>                
                 <div class="shop-category-single-item">
                     <img src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e460afc22b7ea53520_books-min.png" loading="lazy" alt="" class="rounded float-start">
                     <h3 class="category-title">Huawei</h3>

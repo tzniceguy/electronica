@@ -4,7 +4,6 @@ from django.utils import timezone
 from PIL import Image
 # Create your models here.
 
-
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -47,16 +46,4 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
-    # resizing images
-    def save(self, *args, **kwargs):
-        super().save()
-
-        img = Image.open(self.avatar.path)
-
-        if img.height > 100 or img.width > 100:
-            new_img = (100, 100)
-            img.thumbnail(new_img)
-            img.save(self.avatar.path)
-
-    def __str__(self):
-        return self.username
+  

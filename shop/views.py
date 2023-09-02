@@ -65,3 +65,5 @@ def discount_product(request):
     discounted_products = Product.objects.filter(discount__gt=0)
     return render(request, 'discounted-products.html', {'discounted_products' : discounted_products})
 
+def auth(request):
+    return render(request, 'authorization.html')

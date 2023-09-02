@@ -1,5 +1,9 @@
 {% extends './base.html' %}
-
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
 {% block contents %}
     <section class="h-100 gradient-custom-2">
         <div class="container py-5 h-100">
@@ -40,10 +44,12 @@
 
         editButton.addEventListener('click', () => {
             profileForm.style.display = 'block';
+            editButton.classList.add('hidden');
         });
 
         closeFormButton.addEventListener('click', () => {
             profileForm.style.display = 'none';
         });
     </script>
+
 {% endblock %}
